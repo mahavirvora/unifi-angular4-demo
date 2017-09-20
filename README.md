@@ -1,8 +1,6 @@
 # Unifi demo
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.2.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
+1. cd unifi_angular4_demo
+2. npm install
+3. npm start
+4. navigate to http://localhost:3000 in your browser of choice.
