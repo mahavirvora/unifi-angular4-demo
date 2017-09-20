@@ -1,6 +1,7 @@
 import { Component, NgModule, Pipe, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormsModule, FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+// Import the DataService
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'model-form',
@@ -12,12 +13,11 @@ import { ReactiveFormsModule, FormsModule, FormGroup, FormControl, Validators, F
 //   templateUrl: './model-form/model-form.component.html' 
 // })
 export class ModelFormComponent implements OnInit {
-
-  constructor() { }
+  
+  constructor(private _dataService: DataService) { }
 
   myform: FormGroup;
-  firstName: FormControl;
-  lastName: FormControl;
+  name: FormControl;
   email: FormControl;
   subject: FormControl;
   phone: FormControl;
@@ -29,8 +29,7 @@ export class ModelFormComponent implements OnInit {
   }
 
   createFormControls() {
-    this.firstName = new FormControl('', Validators.required);
-    this.lastName = new FormControl('', Validators.required);
+    this.name = new FormControl('', Validators.required);
     this.email = new FormControl('', [
       Validators.required,
       Validators.pattern("[^ @]*@[^ @]*")
@@ -41,10 +40,7 @@ export class ModelFormComponent implements OnInit {
 
   createForm() {
     this.myform = new FormGroup({
-      name: new FormGroup({
-        firstName: this.firstName,
-        lastName: this.lastName,
-      }),
+      name: this.name,
       email: this.email,
       subject: this.subject,
       phone: this.phone
@@ -53,8 +49,14 @@ export class ModelFormComponent implements OnInit {
 
   onSubmit() {
     if (this.myform.valid) {
-      console.log("Form Submitted!");
-      this.myform.reset();
+      // Access the Data Service's getUsers() method we defined
+      this._dataService.doPOST(JSON.stringify(this.myform.value)).subscribe(
+        res => this.saveSuccessfully()
+      );
     }
+  }
+
+  savedSuccessfully() {
+
   }
 }

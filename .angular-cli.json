@@ -6,7 +6,7 @@
   "apps": [
     {
       "root": "src",
-      "outDir": "dist",
+      "outDir": "public",
       "assets": [
         "assets",
         "favicon.ico"
@@ -20,7 +20,8 @@
       "prefix": "app",
       "styles": [
         "styles.css",
-        "../node_modules/bootstrap/dist/css/bootstrap.min.css"
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "../node_modules/bootstrap-essentials/dist/css/bootstrap-essentials.min.css"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",

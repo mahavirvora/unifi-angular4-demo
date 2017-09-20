@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Pipe } from '@angular/core';
-import { ReactiveFormsModule, FormsModule, FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { ModelFormComponent } from './model-form/model-form.component';
+import { DataService } from './data.service';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -12,9 +14,10 @@ import { ModelFormComponent } from './model-form/model-form.component';
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
