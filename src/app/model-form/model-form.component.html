@@ -1,0 +1,118 @@
+<form [formGroup]="myform"
+      (ngSubmit)="onSubmit()">
+
+  <fieldset formGroupName="name">
+    <div class="form-group"
+         [ngClass]="{
+        'has-danger': firstName.invalid && (firstName.dirty || firstName.touched),
+        'has-success': firstName.valid && (firstName.dirty || firstName.touched)
+      }">
+      <label>First Name</label>
+      <input type="text"
+             class="form-control"
+             formControlName="firstName"
+             required>
+      <div class=""
+           *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
+        <p *ngIf="firstName.errors.required">First Name is required</p>
+      </div>
+
+      <!--
+        <pre>Valid? {{ myform.controls.name.controls.firstName.valid }}</pre>
+        <pre>Dirty? {{ myform.controls.name.controls.firstName.dirty }}</pre>
+      -->
+    </div>
+
+    <div class="form-group"
+         [ngClass]="{
+        'has-danger': lastName.invalid && (lastName.dirty || lastName.touched),
+        'has-success': lastName.valid && (lastName.dirty || lastName.touched)
+      }">
+      <label>Last Name</label>
+      <input type="text"
+             class="form-control"
+             formControlName="lastName"
+             required>
+      <div class=""
+           *ngIf="lastName.errors && (lastName.dirty || lastName.touched)">
+        <p *ngIf="lastName.errors.required">Last Name is required</p>
+      </div>
+    </div>
+  </fieldset>
+
+
+  <div class="form-group"
+       [ngClass]="{
+        'has-danger': email.invalid && (email.dirty || email.touched),
+        'has-success': email.valid && (email.dirty || email.touched)
+   }">
+    <label>Email</label>
+    <input type="email"
+           class="form-control"
+           formControlName="email"
+           required>
+    <div class=""
+         *ngIf="email.errors && (email.dirty || email.touched)">
+      <p *ngIf="email.errors.required">Email is required</p>
+      <p *ngIf="email.errors.pattern">The email address must contain at least the @ character</p>
+    </div>
+
+    <!--
+      <pre>Valid? {{ myform.controls.email.valid }}</pre>
+      <pre>Dirty? {{ myform.controls.email.dirty }}</pre>
+    -->
+
+  </div>
+
+  <div class="form-group"
+       [ngClass]="{
+        'has-danger': subject.invalid && (subject.dirty || subject.touched),
+        'has-success': subject.valid && (subject.dirty || subject.touched)
+   }">
+    <label>Subject</label>
+    <input type="text"
+           class="form-control"
+           formControlName="subject"
+           required>
+    <div class=""
+         *ngIf="subject.errors && (subject.dirty || subject.touched)">
+      <p *ngIf="subject.errors.required">Subject is required</p>
+    </div>
+
+    <!--
+      <pre>Valid? {{ myform.controls.subject.valid }}</pre>
+      <pre>Dirty? {{ myform.controls.subject.dirty }}</pre>
+    -->
+
+  </div>
+
+  <div class="form-group"
+       [ngClass]="{
+        'has-danger': phone.invalid && (phone.dirty || phone.touched),
+        'has-success': phone.valid && (phone.dirty || phone.touched)
+   }">
+    <label>Phone No</label>
+    <input type="number"
+           class="form-control"
+           formControlName="phone"
+           required>
+    <div class="danger"
+         *ngIf="phone.errors && (phone.dirty || phone.touched)">
+      <p *ngIf="phone.errors.required">Phone Number is required</p>
+    </div>
+
+    <!--
+      <pre>Valid? {{ myform.controls.subject.valid }}</pre>
+      <pre>Dirty? {{ myform.controls.subject.dirty }}</pre>
+    -->
+
+  </div>
+
+ 
+
+  <button type="submit"
+          class="btn btn-primary">Submit
+  </button>
+  <hr>
+  <pre>{{myform.value | json}}</pre>
+</form>
