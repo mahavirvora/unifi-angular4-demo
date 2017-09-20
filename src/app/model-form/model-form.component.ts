@@ -51,12 +51,12 @@ export class ModelFormComponent implements OnInit {
     if (this.myform.valid) {
       // Access the Data Service's getUsers() method we defined
       this._dataService.doPOST(JSON.stringify(this.myform.value)).subscribe(
-        res => this.saveSuccessfully()
+        res => this.savedSuccessfully()
       );
     }
   }
 
   savedSuccessfully() {
-
+    this.myform.reset();
   }
 }
